@@ -1,0 +1,720 @@
+/* ===== RESET & BASE ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #0a0a1a;
+  color: #e0e0e0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   STORY HOME — SECTION WITH PSEUDO-ELEMENT BACKGROUND
+   ============================================================ */
+.story-home {
+  padding: 0;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+
+
+.story-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+  scroll-snap-align: start;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.story-section.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== BACKGROUND IMAGE PSEUDO-ELEMENT ===== */
+.story-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  z-index: 0;
+  /* fallback color if image fails */
+  background-color: #1a0a2e;
+}
+
+/* ===== DARK OVERLAY (for readability) ===== */
+.story-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 26, 0.7);
+  z-index: 1;
+}
+
+/* Ensure content is above overlay */
+.story-section .section-content {
+  position: relative;
+  z-index: 2;
+  max-width: 560px;
+  width: 100%;
+}
+
+.story-section .section-number {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #f5b342;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.story-section h2 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1.2rem;
+  line-height: 1.1;
+}
+
+.story-section .section-description {
+  font-size: 1.1rem;
+  color: #d0d0e0;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.story-section .highlight {
+  color: #f5b342;
+  font-weight: 600;
+}
+
+/* ============================================================
+   SECTION 1: HERO — Financial Data Background
+   ============================================================ */
+.hero-section::before {
+  /* Using Picsum for reliable images */
+  background-image: url('https://picsum.photos/seed/finance/1920/1080') !important;
+  background-position: center 30% !important;
+}
+
+.hero-section .hero-content {
+  flex: 1;
+  max-width: 540px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-section .hero-content .badge {
+  display: inline-block;
+  background: rgba(245, 179, 66, 0.2);
+  color: #f5b342;
+  padding: 0.3rem 1rem;
+  border-radius: 40px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(245, 179, 66, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.hero-section .hero-content h1 {
+  font-size: clamp(2.8rem, 8vw, 4.5rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffffff 0%, #f5b342 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.05;
+  margin-bottom: 1rem;
+}
+
+.hero-section .hero-content .subtitle {
+  font-size: 1.1rem;
+  color: #d0d0e0;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.hero-section .features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  margin-bottom: 2.5rem;
+  font-size: 0.95rem;
+  color: #d0d0e0;
+}
+
+.hero-section .features span {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.hero-section .hero-visual {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  position: relative;
+  min-height: 300px;
+  flex-wrap: wrap;
+  z-index: 2;
+}
+
+.hero-section .floating-card {
+  width: 90px;
+  height: 90px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  animation: float 4s ease-in-out infinite;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  color: white;
+}
+
+.hero-section .floating-card.card-1 { animation-delay: 0s; }
+.hero-section .floating-card.card-2 { animation-delay: 0.8s; }
+.hero-section .floating-card.card-3 { animation-delay: 1.6s; }
+.hero-section .floating-card.card-4 { animation-delay: 2.4s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-25px) rotate(5deg); }
+}
+
+/* ============================================================
+   SECTION 2: DREAM — Business/Success Image
+   ============================================================ */
+.dream-section::before {
+  background-image: url('https://picsum.photos/seed/dream/1920/1080') !important;
+}
+
+.dream-section .dream-visual {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.dream-section .dream-icon {
+  font-size: 3.5rem;
+  animation: pulse 2.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(245, 179, 66, 0.2));
+}
+
+.dream-section .dream-icon:nth-child(2) { animation-delay: 0.4s; }
+.dream-section .dream-icon:nth-child(3) { animation-delay: 0.8s; }
+.dream-section .dream-icon:nth-child(4) { animation-delay: 1.2s; }
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+
+.dream-section blockquote {
+  font-size: 1.2rem;
+  color: #d0d0e0;
+  font-style: italic;
+  padding: 1rem 1.5rem;
+  border-left: 3px solid #f5b342;
+  margin-top: 1rem;
+  background: rgba(0,0,0,0.3);
+  border-radius: 0 12px 12px 0;
+  backdrop-filter: blur(10px);
+}
+
+/* ============================================================
+   SECTION 3: CONFUSION — Market Volatility Image
+   ============================================================ */
+.confusion-section::before {
+  background-image: url('https://picsum.photos/seed/confused/1920/1080') !important;
+  background-position: center 40% !important;
+}
+
+.confusion-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  margin: 1.5rem 0;
+}
+
+.confusion-item {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #d0d0e0;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.confusion-item:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: scale(1.02);
+}
+
+.confusion-item .confusion-icon {
+  font-size: 1.3rem;
+  animation: shake 3s ease-in-out infinite;
+}
+
+.confusion-item:nth-child(2) .confusion-icon { animation-delay: 0.5s; }
+.confusion-item:nth-child(3) .confusion-icon { animation-delay: 1s; }
+.confusion-item:nth-child(4) .confusion-icon { animation-delay: 1.5s; }
+
+@keyframes shake {
+  0%, 80%, 100% { transform: rotate(0deg); }
+  85% { transform: rotate(-12deg); }
+  90% { transform: rotate(12deg); }
+  95% { transform: rotate(-8deg); }
+}
+
+/* ============================================================
+   SECTION 4: EMI TRAP — Declining Graph Image
+   ============================================================ */
+.emi-section::before {
+  background-image: url('https://picsum.photos/seed/emi/1920/1080') !important;
+  background-position: center 60% !important;
+}
+
+.emi-visual {
+  margin: 1.5rem 0;
+}
+
+.emi-bar {
+  height: 48px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.emi-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #f5b342, #e69500);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 1.2rem;
+  color: #0a0a1a;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: width 1.5s ease;
+}
+
+.emi-note {
+  text-align: center;
+  color: #a0a0b0;
+  font-size: 0.9rem;
+  margin-top: 0.8rem;
+  font-weight: 300;
+}
+
+/* ============================================================
+   SECTION 5: AI ASSISTANCE — Technology/AI Image
+   ============================================================ */
+.ai-section::before {
+  background-image: url('https://picsum.photos/seed/ai/1920/1080') !important;
+}
+
+.ai-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.ai-step {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s ease;
+}
+
+.ai-step:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.ai-step .step-number {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #6c3aff, #4a00e0);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: white;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.ai-step span:last-child {
+  color: #e0e0e0;
+  font-weight: 500;
+}
+
+/* ============================================================
+   SECTION 6: CONFIDENCE — Growth/Success Image
+   ============================================================ */
+.confidence-section::before {
+  background-image: url('https://picsum.photos/seed/confidence/1920/1080') !important;
+  background-position: center 70% !important;
+}
+
+.confidence-card {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.confidence-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.confidence-item:last-child {
+  border-bottom: none;
+}
+
+.confidence-item span {
+  color: #a0a0b0;
+}
+
+.confidence-item strong {
+  color: #f5b342;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* ============================================================
+   SECTION 7: CTA — Banking/Finance Image
+   ============================================================ */
+.cta-section::before {
+  background-image: url('https://picsum.photos/seed/banking/1920/1080') !important;
+}
+
+.cta-section .text-center {
+  text-align: center;
+}
+
+.cta-footer {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #a0a0b0;
+}
+
+.cta-footer span::before {
+  content: "✓ ";
+  color: #f5b342;
+  font-weight: 700;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn-primary {
+  background: linear-gradient(135deg, #f5b342, #e69500);
+  color: #0a0a1a;
+  border: none;
+  padding: 0.9rem 2.5rem;
+  border-radius: 60px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 30px rgba(245, 179, 66, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(245, 179, 66, 0.5);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: #e0e0e0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.7rem 1.8rem;
+  border-radius: 60px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.btn-large {
+  padding: 1.2rem 3.5rem;
+  font-size: 1.2rem;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  .hero-section .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-section .hero-content .features {
+    justify-content: center;
+  }
+
+  .hero-section .hero-visual {
+    min-height: 150px;
+  }
+
+  .hero-section .floating-card {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+
+  .confusion-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .confusion-item {
+    font-size: 0.85rem;
+    padding: 0.8rem;
+  }
+
+  .story-section h2 {
+    font-size: 2rem;
+  }
+
+  .cta-footer {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .confusion-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .story-section {
+    padding: 3rem 1rem;
+    min-height: auto;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .hero-section {
+    min-height: auto;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+/* ===== QUESTIONNAIRE STYLES ===== */
+.questionnaire {
+  padding: 1rem 0;
+}
+
+.step-indicator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: #8888a0;
+}
+
+.step-indicator .current {
+  color: #f5b342;
+  font-weight: 700;
+}
+
+.progress-bar {
+  height: 4px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  margin: 0.5rem 0 1.5rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #f5b342, #e69500);
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.question-text {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.help-text {
+  font-size: 0.9rem;
+  color: #8888a0;
+  margin-bottom: 0.5rem;
+}
+
+.input-area {
+  margin: 1.5rem 0;
+}
+
+.input-area select,
+.input-area input {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  color: #e0e0e0;
+  font-size: 1rem;
+  transition: border 0.2s, box-shadow 0.2s;
+  outline: none;
+  font-family: inherit;
+}
+
+.input-area select:focus,
+.input-area input:focus {
+  border-color: #f5b342;
+  box-shadow: 0 0 0 3px rgba(245, 179, 66, 0.2);
+}
+
+.input-area select option {
+  background: #1a1a2e;
+}
+
+.navigation {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.navigation button {
+  flex: 1;
+  padding: 0.8rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.navigation .btn-back {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e0e0e0;
+}
+
+.navigation .btn-back:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.navigation .btn-back:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.navigation .btn-next {
+  background: linear-gradient(135deg, #f5b342, #e69500);
+  border: none;
+  color: #0a0a1a;
+}
+
+.navigation .btn-next:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(245, 179, 66, 0.3);
+}
+
+.navigation .btn-next:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Boolean buttons */
+.boolean-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.boolean-group button {
+  flex: 1;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: #e0e0e0;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.boolean-group button.active {
+  border-color: #f5b342;
+  background: rgba(245, 179, 66, 0.15);
+}
+
+.boolean-group button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}

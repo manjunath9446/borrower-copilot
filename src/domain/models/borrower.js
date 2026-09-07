@@ -1,0 +1,30 @@
+/**
+ * @typedef {Object} BorrowerProfile
+ * @property {Object} borrower
+ * @property {string} borrower.incomeSource
+ * @property {number} [borrower.age]
+ * @property {number} [borrower.dependents]
+ * @property {Object} income
+ * @property {number} [income.monthlyNet]
+ * @property {number} [income.minMonthly]
+ * @property {number} [income.maxMonthly]
+ * @property {string} income.stability
+ * @property {Object} expenses
+ * @property {number} [expenses.household]
+ * @property {number} [expenses.rent]
+ * @property {Object} debt
+ * @property {number} [debt.totalEMI]
+ * @property {Object} savings
+ * @property {number} [savings.liquidSavings]
+ * @property {Object} credit
+ * @property {number} [credit.score]
+ * @property {string} credit.historyStatus
+ * @property {Object} loan
+ * @property {string} loan.type
+ * @property {number} loan.amount
+ * @property {number} [loan.tenure]
+ * @property {string} [loan.purpose]
+ * @property {Object} evidence
+ * @property {boolean} evidence.incomeDocumented
+ * @property {boolean} evidence.expensesKnown
+ */
