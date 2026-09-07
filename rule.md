@@ -316,6 +316,3 @@ Rules that define how missing or unknown data is handled.
 
 ---
 
-**Last Updated:** September 2026
-**Version:** 1.0
-**Status:** ✅ Live
