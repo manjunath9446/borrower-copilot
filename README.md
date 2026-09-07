@@ -150,6 +150,7 @@ What happens if:
                  ┌──────────┴───────────┐
                  ▼                      ▼
           Results Screen         Negotiation Card
+```
 
 
 ## 🚀 Getting Started
