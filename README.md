@@ -174,6 +174,7 @@ npm install
 
 # 4. Start the development server
 npm run dev
+```
 
-# 5.LIVE
+### 5.LIVE
 https://borrower-copilot-kohl-phi.vercel.app/
